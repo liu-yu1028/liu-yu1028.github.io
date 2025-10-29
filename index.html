@@ -14,8 +14,7 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      /* 將背景色設置為較淺的顏色，方便看到變化 */
-      background-color: #f0f0f0; 
+      background-color: #white;
       font-family: Arial, sans-serif;
     }
     .logo {
@@ -33,10 +32,6 @@
       color: #555;
       margin-top: 10px;
     }
-    /* 為 body 增加 transition，讓背景色的改變平滑 */
-    body {
-        transition: background-color 0.6s ease-in-out; 
-    }
   </style>
 </head>
 <body>
@@ -49,28 +44,15 @@
 
   <script>
     $(document).ready(function(){
-      
       $("#github-link").click(function(event){
         event.preventDefault();
 
         const targetUrl = $(this).attr("href");
 
-        // 1. 同時改變 body 的背景顏色（用 animate 實現顏色變化）
-        $("body").animate({
-            backgroundColor: "#000000" // 將背景漸變為黑色
-        }, 600); // 執行 600 毫秒
-
-        // 2. 讓所有的文字和圖片內容淡出
-        // 我們選擇 body 的 direct children (h1, a, h2)，讓它們淡出
-        // 這樣黑色背景就會逐漸顯現
-        $("body > *").fadeOut(600, function(){
-            // 這個回調函式在所有元素都淡出後才會執行
-            
-            // 由於動畫完成後，我們直接跳轉，不需要在這裡做其他清理
-            window.location.href = targetUrl;
+        $("body").fadeOut("slow", function(){
+          window.location.href = targetUrl;
         });
       });
-      
     });
   </script>
 </body>
