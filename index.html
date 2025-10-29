@@ -43,7 +43,14 @@
   <h2>Welcome to my personal GitHub Page </h2>
 
   <script>
+    window.onpageshow = function(event) {
+        if (event.persisted) {
+            $("body").show().css("opacity", 1);
+        }
+    };
+    
     $(document).ready(function(){
+        
       $("body").show().css("opacity", 1);
       $("#github-link").click(function(event){
         event.preventDefault();
