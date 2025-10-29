@@ -3,6 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <title>Liu Zhi Yu | GitHub Page</title>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  
   <style>
     body {
       margin: 0;
@@ -18,7 +21,6 @@
       width: 150px;
       height: auto;
       margin-bottom: 20px;
-      cursor: pointer;
     }
     h1 {
       font-size: 40px;
@@ -35,9 +37,23 @@
 <body>
   <h1>Liu Zhi Yu </h1>
 
-  <a href="https://github.com/liu-yu1028" target="_blank" title="點擊前往我的 GitHub 主頁">
+  <a href="https://github.com/liu-yu1028" id="github-link">
     <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub Logo" class="logo">
   </a>
   <h2>Welcome to my personal GitHub Page </h2>
+
+  <script>
+    $(document).ready(function(){
+      $("github-link").click(function(event){
+        event.preventDefault();
+
+        const targetUrl = $(this).attr("href");
+
+        $("body").fadeOut("slow", function(){
+          window.location.href = targetUrl;
+        });
+      });
+    });
+  </script>
 </body>
 </html>
